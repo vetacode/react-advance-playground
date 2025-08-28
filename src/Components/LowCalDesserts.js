@@ -2,7 +2,7 @@ import desserts from '../Database/desserts';
 
 function LowCalDesserts() {
   return (
-    <div className='low-cal-desserts'>
+    <div className='section'>
       <h2>List of low calorie desserts:</h2>
       <DessertsList data={desserts} />
     </div>
@@ -17,15 +17,12 @@ function DessertsList(props) {
     .sort((a, b) => a.calories - b.calories)
     .map((dessert) => {
       const itemsName = `${dessert.name} - ${dessert.calories}`;
-      return <li>{itemsName} Calories</li>;
+      return <li key={dessert.name}>{itemsName} Calories</li>;
     });
 
   return (
     <div>
       <ul>{ListItems}</ul>
-      <button className='btn' onSubmit={ListItems}>
-        Submit
-      </button>
     </div>
   );
 }
