@@ -23,6 +23,9 @@ function DessertsList(props) {
   return (
     <div>
       <ul>{ListItems}</ul>
+      <button className='btn' onSubmit={ListItems}>
+        Submit
+      </button>
     </div>
   );
 }

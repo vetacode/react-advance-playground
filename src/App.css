@@ -1,3 +1,8 @@
+:root {
+  --c1: #61fbd2;
+  --c2: #db70ff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +35,9 @@ li {
 }
 
 .btn {
-  background-color: #61fbd2;
+  background: linear-gradient(270deg, #61fbd2, #db70ff);
+  background-size: 200% 200%;
+  background-position: left center;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -38,16 +45,17 @@ li {
   font-size: 16px;
   margin: 10px;
   font-weight: bold;
-  color: #282c34;
+  color: #282c3441;
+  transition: background-position 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
 .btn:hover {
-  background-color: rgb(83, 212, 191);
-  transition: ease-in-out 0.3s;
-  color: #282c34;
-  font-style: bold;
+  background-position: right center; /* 👈 smoothly shifts */
+  color: rgb(72, 72, 72); /* text fades smoothly */
 }
 
 .btn:active {
-  background-color: #58fff1;
+  /* background-color: #58fff1; */
+  background: linear-gradient(270deg, #61fbd2, #db70ff);
   transform: scale(0.95);
 }
