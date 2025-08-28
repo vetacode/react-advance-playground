@@ -40,12 +40,12 @@ li {
   background-position: left center;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
   margin: 10px;
   font-weight: bold;
-  color: #282c3441;
+  color: #282c34;
   transition: background-position 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
