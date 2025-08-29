@@ -41,9 +41,14 @@ const Content = () => {
 };
 
 const Header = () => {
+  const { theme } = useTheme();
   return (
     <>
-      <h1>Theme Switcher</h1>
+      {theme === 'dark' ? (
+        <h1 style={{ color: 'salmon' }}>Theme Switcher</h1>
+      ) : (
+        <h1 style={{ color: 'goldenrod' }}>Theme Switcher</h1>
+      )}
       <header>
         <Title>Little Lemon 🍕</Title>
         <Switch />
