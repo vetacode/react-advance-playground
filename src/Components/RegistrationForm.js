@@ -25,17 +25,49 @@ export const RegistrationForm = () => {
   //   return <p className='FieldError'>Please fill in all the required fields</p>;
   // };
 
+  // const getIsFormValid = () => {
+  //   if (
+  //     firstName !== '' &&
+  //     email !== '' &&
+  //     validateEmail(email) &&
+  //     password.value !== '' &&
+  //     password.value.length >= 8 &&
+  //     role !== 'role'
+  //   ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // };
+
   const getIsFormValid = () => {
-    if (
-      firstName === '' ||
-      email === '' ||
-      validateEmail(email) ||
-      password.value.length >= 8 ||
-      role === 'role'
-    ) {
-      return true;
-    }
+    return (
+      firstName &&
+      validateEmail(email) &&
+      password.value.length >= 8 &&
+      role !== 'role'
+    );
   };
+
+  console.log(getIsFormValid());
+
+  // const getIsFormValid = () => {
+  //   console.log('firstName:', firstName !== '');
+  //   console.log('email:', email !== '');
+  //   console.log('validateEmail:', validateEmail(email));
+  //   console.log('password not empty:', password.value !== '');
+  //   console.log('password length >= 8:', password.value.length >= 8);
+  //   console.log('role:', role !== 'role');
+
+  //   return (
+  //     firstName.trim() !== '' &&
+  //     email.trim() !== '' &&
+  //     validateEmail(email) &&
+  //     password.value.trim() !== '' &&
+  //     password.value.length >= 8 &&
+  //     role !== 'role'
+  //   );
+  // };
 
   const clearForm = () => {
     setFirstName('');
@@ -92,13 +124,13 @@ export const RegistrationForm = () => {
               Password <sup>*</sup>
             </label>
             <input
+              type='password'
               value={password.value}
-              onChange={(e) =>
-                setPassword({ value: e.target.value, isTouched: true })
-              }
+              onChange={(e) => setPassword({ value: e.target.value })}
               placeholder='Password'
-              onFocus={(e) => (e.target.value = password.value)}
-              onBlur={(e) => (e.target.value = '********')}
+              onBlur={(e) => {
+                setPassword({ value: e.target.value, isTouched: true });
+              }}
             />
             {password.isTouched && PasswordErrorMessage(password)}
           </div>
@@ -106,7 +138,7 @@ export const RegistrationForm = () => {
             <label>
               Role <sup>*</sup>
             </label>
-            <select>
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
               <option value='role'>Role</option>
               <option value='individual'>Individual</option>
               <option value='business'>Business</option>
