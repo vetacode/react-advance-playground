@@ -135,9 +135,11 @@ export const RegistrationForm = () => {
               <option value='business'>Business</option>
             </select>
           </div>
-          <button type='submit' disabled={!getIsFormValid()}>
-            Create account
-          </button>
+          <div className='FormTitle'>
+            <button type='submit' disabled={!getIsFormValid()}>
+              Create account
+            </button>
+          </div>
         </fieldset>
       </form>
     </div>
