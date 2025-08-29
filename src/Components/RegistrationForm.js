@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import { validateEmail } from '../utils';
 
-const PasswordErrorMessage = (password) => {
-  if (password.value.length < 8) {
-    return (
-      <p className='FieldError'>Password should have at least 8 characters</p>
-    );
-  }
+const PasswordErrorMessage = () => {
+  return (
+    <p className='FieldError'>Password should have at least 8 characters</p>
+  );
+};
+
+const firstNameErrorMessage = () => {
+  return <p className='FieldError'>Please enter your first name</p>;
+};
+
+const emailErrorMessage = () => {
+  return <p className='FieldError'>Please enter a valid email</p>;
 };
 
 export const RegistrationForm = () => {
-  const [firstName, setFirstName] = useState('');
+  const [firstName, setFirstName] = useState({ value: '', isTouched: false });
   const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState({ value: '', isTouched: false });
 
   const [password, setPassword] = useState({
     value: '',
@@ -21,58 +27,21 @@ export const RegistrationForm = () => {
 
   const [role, setRole] = useState('role');
 
-  // const invalidForm = () => {
-  //   return <p className='FieldError'>Please fill in all the required fields</p>;
-  // };
-
-  // const getIsFormValid = () => {
-  //   if (
-  //     firstName !== '' &&
-  //     email !== '' &&
-  //     validateEmail(email) &&
-  //     password.value !== '' &&
-  //     password.value.length >= 8 &&
-  //     role !== 'role'
-  //   ) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // };
-
   const getIsFormValid = () => {
     return (
-      firstName &&
-      validateEmail(email) &&
+      firstName.value.trim() !== '' &&
+      validateEmail(email.value) &&
       password.value.length >= 8 &&
       role !== 'role'
     );
   };
 
-  console.log(getIsFormValid());
-
-  // const getIsFormValid = () => {
-  //   console.log('firstName:', firstName !== '');
-  //   console.log('email:', email !== '');
-  //   console.log('validateEmail:', validateEmail(email));
-  //   console.log('password not empty:', password.value !== '');
-  //   console.log('password length >= 8:', password.value.length >= 8);
-  //   console.log('role:', role !== 'role');
-
-  //   return (
-  //     firstName.trim() !== '' &&
-  //     email.trim() !== '' &&
-  //     validateEmail(email) &&
-  //     password.value.trim() !== '' &&
-  //     password.value.length >= 8 &&
-  //     role !== 'role'
-  //   );
-  // };
+  // console.log(getIsFormValid());
 
   const clearForm = () => {
-    setFirstName('');
+    setFirstName({ value: '', isTouched: false });
     setLastName('');
-    setEmail('');
+    setEmail({ value: '', isTouched: false });
     setPassword({ value: '', isTouched: false });
     setRole('role');
   };
@@ -83,27 +52,35 @@ export const RegistrationForm = () => {
     clearForm();
   };
   return (
-    <>
-      <div className='section'>
-        <h2>Registration Form</h2>
-      </div>
+    <div className='section'>
+      <h2>Registration Form</h2>
 
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <h2>Sign Up</h2>
+          <h3 className='FormTitle'>Sign Up</h3>
+
           <div className='Field'>
             <label>
               First name <sup>*</sup>
             </label>
             <input
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              className='input'
               placeholder='First name'
+              value={firstName.value}
+              onChange={(e) =>
+                setFirstName({ ...firstName, value: e.target.value })
+              }
+              onBlur={() => setFirstName({ ...firstName, isTouched: true })}
             />
+            {firstName.isTouched && !firstName.value.trim()
+              ? firstNameErrorMessage()
+              : null}
           </div>
+
           <div className='Field'>
             <label>Last name</label>
             <input
+              className='input'
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               placeholder='Last name'
@@ -114,31 +91,46 @@ export const RegistrationForm = () => {
               Email address <sup>*</sup>
             </label>
             <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              className='input'
+              value={email.value}
+              onChange={(e) => setEmail({ ...email, value: e.target.value })}
+              onBlur={() => setEmail({ ...email, isTouched: true })}
               placeholder='Email address'
             />
+
+            {email.isTouched && !validateEmail(email.value)
+              ? emailErrorMessage()
+              : null}
           </div>
           <div className='Field'>
             <label>
               Password <sup>*</sup>
             </label>
             <input
+              className='input'
               type='password'
               value={password.value}
-              onChange={(e) => setPassword({ value: e.target.value })}
               placeholder='Password'
-              onBlur={(e) => {
-                setPassword({ value: e.target.value, isTouched: true });
+              onChange={(e) =>
+                setPassword({ ...password, value: e.target.value })
+              }
+              onBlur={() => {
+                setPassword({ ...password, isTouched: true });
               }}
             />
-            {password.isTouched && PasswordErrorMessage(password)}
+            {password.isTouched && password.value.length < 8 ? (
+              <PasswordErrorMessage />
+            ) : null}
           </div>
           <div className='Field'>
             <label>
               Role <sup>*</sup>
             </label>
-            <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <select
+              className='input'
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            >
               <option value='role'>Role</option>
               <option value='individual'>Individual</option>
               <option value='business'>Business</option>
@@ -149,6 +141,6 @@ export const RegistrationForm = () => {
           </button>
         </fieldset>
       </form>
-    </>
+    </div>
   );
 };

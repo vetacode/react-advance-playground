@@ -33,6 +33,15 @@ li {
   /* background-color: #ffd700; contrast gold */
   padding: 10px 20px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section h2 {
+  color: darkslategrey;
+  margin-bottom: 10px;
 }
 
 .form {
@@ -69,7 +78,9 @@ li {
 }
 
 /* REGISTRATION FORM */
-
+.FormTitle {
+  padding-bottom: 20px;
+}
 fieldset {
   display: flex;
   width: 480px;
@@ -106,11 +117,16 @@ select {
   position: relative;
   padding-bottom: 24px;
   display: flex;
+  align-items: start;
   flex-direction: column;
 }
 
+.input {
+  width: 100%;
+}
+
 .FieldError {
-  position: absolute;
+  /* position: absolute; */
   bottom: -6px;
   color: red;
   font-size: 12px;
