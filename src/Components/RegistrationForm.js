@@ -58,7 +58,6 @@ export const RegistrationForm = () => {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <h3 className='FormTitle'>Sign Up</h3>
-
           <div className='Field'>
             <label>
               First name <sup>*</sup>
