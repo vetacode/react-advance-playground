@@ -2,10 +2,8 @@ import { useState } from 'react';
 
 const ControlledForm = () => {
   const [value, setValue] = useState('');
-  // console.log(value);
   const handleChange = (e) => {
     setValue(e.target.value);
-
     console.log(e.target.value);
   };
 
@@ -18,4 +16,5 @@ const ControlledForm = () => {
     </div>
   );
 };
+
 export default ControlledForm;

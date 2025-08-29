@@ -6,7 +6,6 @@ function UncontrolledForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const inputValue = inputRef.current.value;
-    // Do something with the value
     console.log(inputValue);
   };
   return (
