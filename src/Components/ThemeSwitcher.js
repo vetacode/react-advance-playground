@@ -1,4 +1,4 @@
-import { ThemeProvider, useTheme } from '../Context/ThemeContext';
+import { useTheme } from '../Context/ThemeContext';
 import Switch from '../Switch';
 
 const Title = ({ children }) => {
@@ -42,10 +42,13 @@ const Content = () => {
 
 const Header = () => {
   return (
-    <header>
-      <Title>Little Lemon 🍕</Title>
-      <Switch />
-    </header>
+    <>
+      <h1>Theme Switcher</h1>
+      <header>
+        <Title>Little Lemon 🍕</Title>
+        <Switch />
+      </header>
+    </>
   );
 };
 
@@ -62,7 +65,7 @@ function ThemeSwitcher() {
   const { theme } = useTheme();
   return (
     <div
-      className='App'
+      className='section'
       style={{
         backgroundColor: theme === 'light' ? 'white' : 'black',
       }}
@@ -73,12 +76,4 @@ function ThemeSwitcher() {
   );
 }
 
-function Root() {
-  return (
-    <ThemeProvider>
-      <ThemeSwitcher />
-    </ThemeProvider>
-  );
-}
-
-export { ThemeSwitcher, Root };
+export { ThemeSwitcher };

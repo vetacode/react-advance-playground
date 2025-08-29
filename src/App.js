@@ -4,7 +4,8 @@ import LowCalDesserts from './Components/LowCalDesserts';
 import { RegistrationForm } from './Components/RegistrationForm';
 import { ThemeSwitcher } from './Components/ThemeSwitcher';
 import { UncontrolledForm, Form } from './Components/UncontrolledForm';
-// import Form from './Components/UncontrolledForm';
+import { ThemeProvider } from './Context/ThemeContext';
+
 function App() {
   return (
     <div className='App'>
@@ -18,4 +19,12 @@ function App() {
   );
 }
 
-export default App;
+function Root() {
+  return (
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  );
+}
+
+export default Root;

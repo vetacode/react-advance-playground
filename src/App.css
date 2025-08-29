@@ -173,6 +173,8 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  /* border: 2px solid gold; */
+  width: 100%;
 }
 
 .Page {
