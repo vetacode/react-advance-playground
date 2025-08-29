@@ -53,7 +53,7 @@ export const RegistrationForm = () => {
   };
   return (
     <div className='section'>
-      <h2>Registration Form</h2>
+      <h2>Controlled Registration Form</h2>
 
       <form onSubmit={handleSubmit}>
         <fieldset>
