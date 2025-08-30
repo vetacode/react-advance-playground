@@ -1,6 +1,10 @@
 import './App.css';
 import ControlledForm from './Components/ControlledForm';
-import { FalseGreetings, TrueGreetings } from './Components/Greetings';
+import {
+  CallBackGreetings,
+  FalseGreetings,
+  TrueGreetings,
+} from './Components/GreetingsObj';
 import LowCalDesserts from './Components/LowCalDesserts';
 import { RegistrationForm } from './Components/RegistrationForm';
 import { ThemeSwitcher } from './Components/ThemeSwitcher';
@@ -18,6 +22,7 @@ function App() {
       <ThemeSwitcher />
       <FalseGreetings />
       <TrueGreetings />
+      <CallBackGreetings />
     </div>
   );
 }

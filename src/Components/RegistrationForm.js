@@ -19,13 +19,24 @@ export const RegistrationForm = () => {
   const [firstName, setFirstName] = useState({ value: '', isTouched: false });
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState({ value: '', isTouched: false });
-
   const [password, setPassword] = useState({
     value: '',
     isTouched: false,
   });
-
   const [role, setRole] = useState('role');
+
+  const clearForm = () => {
+    // const newFirstName = { ...firstName };
+    // newFirstName.value = '';
+    // newFirstName.isTouched = false;
+    // setFirstName(newFirstName); /* NO NEED USE COPY IF WANT TO REPLACE THE WHOLE OLD OBJECT OR JUST A SIMPLE OBJECT*/
+
+    setFirstName({ value: '', isTouched: false });
+    setLastName('');
+    setEmail({ value: '', isTouched: false });
+    setPassword({ value: '', isTouched: false });
+    setRole('role');
+  };
 
   const getIsFormValid = () => {
     return (
@@ -34,16 +45,6 @@ export const RegistrationForm = () => {
       password.value.length >= 8 &&
       role !== 'role'
     );
-  };
-
-  // console.log(getIsFormValid());
-
-  const clearForm = () => {
-    setFirstName({ value: '', isTouched: false });
-    setLastName('');
-    setEmail({ value: '', isTouched: false });
-    setPassword({ value: '', isTouched: false });
-    setRole('role');
   };
 
   const handleSubmit = (e) => {
