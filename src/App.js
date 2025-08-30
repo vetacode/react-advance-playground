@@ -6,6 +6,7 @@ import {
   TrueGreetings,
 } from './Components/GreetingsObj';
 import LowCalDesserts from './Components/LowCalDesserts';
+import GiftCard from './Components/ManagingState';
 import { RegistrationForm } from './Components/RegistrationForm';
 import { ThemeSwitcher } from './Components/ThemeSwitcher';
 import { UncontrolledForm, Form } from './Components/UncontrolledForm';
@@ -23,6 +24,7 @@ function App() {
       <FalseGreetings />
       <TrueGreetings />
       <CallBackGreetings />
+      <GiftCard />
     </div>
   );
 }
