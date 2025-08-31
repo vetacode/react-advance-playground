@@ -1,5 +1,6 @@
 import './App.css';
 import ControlledForm from './Components/ControlledForm';
+import FetchCrypto from './Components/FetchingData';
 import {
   CallBackGreetings,
   FalseGreetings,
@@ -25,6 +26,7 @@ function App() {
       <TrueGreetings />
       <CallBackGreetings />
       <GiftCard />
+      <FetchCrypto />
     </div>
   );
 }
