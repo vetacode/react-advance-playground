@@ -23,7 +23,7 @@ function FetchCustData() {
       <img src={user.results[0].picture.large} alt='' />
     </div>
   ) : (
-    <h1>Data pending...</h1>
+    <h1 style={{ color: 'goldenrod' }}>Data pending...</h1>
   );
 }
 
