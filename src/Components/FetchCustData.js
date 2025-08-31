@@ -6,7 +6,7 @@ function FetchCustData() {
   const fetchData = () => {
     fetch('https://randomuser.me/api/?results=1').then((response) =>
       response.json().then((data) => {
-        setUser(data.results[0]);
+        setUser(data);
       })
     );
   };
@@ -23,7 +23,7 @@ function FetchCustData() {
       <img src={user.results[0].picture.large} alt='' />
     </div>
   ) : (
-    <h1 style={{ color: 'goldenrod' }}>Data pending...</h1>
+    <h2 style={{ color: 'goldenrod' }}>Data pending ... ...</h2>
   );
 }
 
