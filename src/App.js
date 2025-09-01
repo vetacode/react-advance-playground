@@ -1,4 +1,6 @@
 import './App.css';
+import { UseCallbackBest, UseCallbackBad } from './Components/BestBadPractices';
+
 import ControlledForm from './Components/ControlledForm';
 import FetchCrypto from './Components/FetchingData';
 import FetchCustData from './Components/FetchCustData';
@@ -17,6 +19,8 @@ import { ThemeProvider } from './Context/ThemeContext';
 function App() {
   return (
     <div className='App'>
+      <UseCallbackBad />
+      <UseCallbackBest />
       <LowCalDesserts />
       <UncontrolledForm />
       <ControlledForm />
