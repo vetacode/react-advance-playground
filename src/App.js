@@ -15,6 +15,7 @@ import { RegistrationForm } from './Components/RegistrationForm';
 import { ThemeSwitcher } from './Components/ThemeSwitcher';
 import { UncontrolledForm, Form } from './Components/UncontrolledForm';
 import { ThemeProvider } from './Context/ThemeContext';
+import CustomHook from './Components/CustomHook';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <GiftCard />
       <FetchCrypto />
       <FetchCustData />
+      <CustomHook />
     </div>
   );
 }
