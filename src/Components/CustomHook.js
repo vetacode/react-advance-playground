@@ -45,6 +45,8 @@ export default function CustomHook() {
 }
 function usePrevious(val) {
   const ref = useRef();
+
+  // ref.current = val;
   useEffect(() => {
     ref.current = val;
   }, [val]);
