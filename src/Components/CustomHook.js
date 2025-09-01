@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 export default function CustomHook() {
   const [day, setDay] = useState('Monday');
+  const [lastAction, setLastAction] = useState('null');
   const prevDay = usePrevious(day);
-
-  const yesterday = useYesterday(prevDay);
+  const yesterday = useYesterday(day);
   const getNextDay = () => {
     if (day === 'Monday') {
       setDay('Tuesday');
@@ -16,6 +16,7 @@ export default function CustomHook() {
     } else if (day === 'Friday') {
       setDay('Monday');
     }
+    setLastAction('next');
   };
 
   const getPreviousDay = () => {
@@ -30,6 +31,7 @@ export default function CustomHook() {
     } else if (day === 'Friday') {
       setDay('Thursday');
     }
+    setLastAction('previous');
   };
 
   return (
@@ -38,9 +40,13 @@ export default function CustomHook() {
       <h2>
         Today is: {day}
         <br />
-        {prevDay && <span>Previous work day was: {prevDay}</span>}
+        {lastAction === 'next' ? (
+          <span>Previous work day was: {prevDay}</span>
+        ) : (
+          <span>Previous work: {yesterday}</span>
+        )}
         <br />
-        {getPreviousDay && <span>Yesterday was: {yesterday}</span>}
+        {/* {getPreviousDay && <span>Previous work day was: {yesterday}</span>} */}
       </h2>
       <button onClick={getNextDay}>Get next day</button>
       <button onClick={getPreviousDay}>Get previous day</button>
@@ -49,19 +55,27 @@ export default function CustomHook() {
 }
 function usePrevious(val) {
   const ref = useRef();
-
-  // ref.current = val;
   useEffect(() => {
     ref.current = val;
   }, [val]);
   return ref.current;
 }
 
-function useYesterday(val) {
-  const ref = useRef();
-
-  useEffect(() => {
-    ref.current = val;
-  }, [val]);
-  return ref.current;
+function useYesterday(day) {
+  return useMemo(() => {
+    switch (day) {
+      case 'Monday':
+        return 'Friday';
+      case 'Tuesday':
+        return 'Monday';
+      case 'Wednesday':
+        return 'Tuesday';
+      case 'Thursday':
+        return 'Wednesday';
+      case 'Friday':
+        return 'Thursday';
+      default:
+        return undefined;
+    }
+  }, [day]);
 }
