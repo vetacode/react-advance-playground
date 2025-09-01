@@ -15,15 +15,38 @@ export default function CustomHook() {
       setDay('Monday');
     }
   };
+
+  const getPreviousDay = () => {
+    if (day === 'Monday') {
+      setDay('Friday');
+    } else if (day === 'Tuesday') {
+      setDay('Monday');
+    } else if (day === 'Wednesday') {
+      setDay('Tuesday');
+    } else if (day === 'Thursday') {
+      setDay('Wednesday');
+    } else if (day === 'Friday') {
+      setDay('Thursday');
+    }
+  };
+
   return (
-    <div style={{ padding: '40px' }}>
-      <h1>
+    <div className='section'>
+      <h1>CustomHook</h1>
+      <h2>
         Today is: {day}
         <br />
         {prevDay && <span>Previous work day was: {prevDay}</span>}
-      </h1>
+      </h2>
       <button onClick={getNextDay}>Get next day</button>
+      <button onClick={getPreviousDay}>Get previous day</button>
     </div>
   );
 }
-function usePrevious(val) {}
+function usePrevious(val) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = val;
+  }, [val]);
+  return ref.current;
+}
