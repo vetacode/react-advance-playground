@@ -16,6 +16,7 @@ import { ThemeSwitcher } from './Components/ThemeSwitcher';
 import { UncontrolledForm, Form } from './Components/UncontrolledForm';
 import { ThemeProvider } from './Context/ThemeContext';
 import CustomHook from './Components/CustomHook';
+import ReactClone from './Components/ReactClone';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <FetchCrypto />
       <FetchCustData />
       <CustomHook />
+      <ReactClone />
     </div>
   );
 }
