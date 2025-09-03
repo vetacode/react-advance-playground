@@ -17,7 +17,7 @@ import { UncontrolledForm, Form } from './Components/UncontrolledForm';
 import { ThemeProvider } from './Context/ThemeContext';
 import CustomHook from './Components/CustomHook';
 import ReactClone from './Components/ReactCloneRadio';
-import HigherOrderComp from './Components/HigherOrderComp';
+import RenderProp from './Components/RenderProp';
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
       <FetchCustData />
       <CustomHook />
       <ReactClone />
-      <HigherOrderComp />
+      <RenderProp />
     </div>
   );
 }

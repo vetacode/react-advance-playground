@@ -58,7 +58,7 @@ const PointMouseLogger = () => {
   );
 };
 
-function HigherOrderComp() {
+function RenderProp() {
   return (
     <div className='hoc'>
       <h1>Higher Order Components</h1>
@@ -69,4 +69,4 @@ function HigherOrderComp() {
   );
 }
 
-export default HigherOrderComp;
+export default RenderProp;
