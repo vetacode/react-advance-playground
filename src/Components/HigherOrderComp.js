@@ -23,42 +23,44 @@ const MousePosition = ({ render }) => {
   }, []);
 
   // What should be returned here?
-  return null;
+  return render({ mousePosition });
 };
 
 // This component should not receive any props
-const PanelMouseLogger = ({ mousePosition }) => {
+const PanelMouseLogger = () => {
   // The below if statement can be removed after the render props pattern is implemented
-  if (!mousePosition) {
-    return null;
-  }
   return (
     <div className='BasicTracker'>
       <p>Mouse position:</p>
-      <div className='Row'>
-        <span>x: {mousePosition.x}</span>
-        <span>y: {mousePosition.y}</span>
-      </div>
+      <MousePosition
+        render={({ mousePosition }) => (
+          <div className='Row'>
+            <span>x: {mousePosition.x}</span>
+            <span>y: {mousePosition.y}</span>
+          </div>
+        )}
+      />
     </div>
   );
 };
 
 // This component should not receive any props
-const PointMouseLogger = ({ mousePosition }) => {
+const PointMouseLogger = () => {
   // The below if statement can be removed after the render props pattern is implemented
-  if (!mousePosition) {
-    return null;
-  }
   return (
-    <p>
-      ({mousePosition.x}, {mousePosition.y})
-    </p>
+    <MousePosition
+      render={({ mousePosition }) => (
+        <p>
+          ({mousePosition.x}, {mousePosition.y})
+        </p>
+      )}
+    />
   );
 };
 
 function HigherOrderComp() {
   return (
-    <div className='section'>
+    <div className='hoc'>
       <h1>Higher Order Components</h1>
       <header className='Header'>Little Lemon Restaurant 🍕</header>
       <PanelMouseLogger />
