@@ -16,7 +16,7 @@ import { ThemeSwitcher } from './Components/ThemeSwitcher';
 import { UncontrolledForm, Form } from './Components/UncontrolledForm';
 import { ThemeProvider } from './Context/ThemeContext';
 import CustomHook from './Components/CustomHook';
-import ReactClone from './Components/ReactClone';
+import ReactClone from './Components/ReactCloneRadio';
 
 function App() {
   return (
