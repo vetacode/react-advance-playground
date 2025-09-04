@@ -100,11 +100,12 @@ label {
 
 sup {
   color: red;
-  top: -2px;
+  top: 4px;
+  /* top: -2px; */
   font-size: 95%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline;
+  /* vertical-align: baseline; */
 }
 
 input,

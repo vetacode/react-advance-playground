@@ -45,9 +45,9 @@ const Header = () => {
   return (
     <>
       {theme === 'dark' ? (
-        <h1 style={{ color: 'salmon' }}>Theme Switcher</h1>
-      ) : (
         <h1 style={{ color: 'goldenrod' }}>Theme Switcher</h1>
+      ) : (
+        <h1 style={{ color: 'lightgoldenrodyellow' }}>Theme Switcher</h1>
       )}
       <header>
         <Title>Little Lemon 🍕</Title>
@@ -72,7 +72,7 @@ function ThemeSwitcher() {
     <div
       className='section'
       style={{
-        backgroundColor: theme === 'light' ? 'white' : 'black',
+        backgroundColor: theme === 'light' ? 'goldenrod' : 'black',
       }}
     >
       <Header />
