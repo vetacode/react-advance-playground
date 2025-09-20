@@ -18,6 +18,8 @@ import { ThemeProvider } from './Context/ThemeContext';
 import CustomHook from './Components/CustomHook';
 import ReactClone from './Components/ReactCloneRadio';
 import RenderProp from './Components/RenderProp';
+import { EventList } from './Components/FamilyCalFalse';
+import { FamilyCalendar } from './Components/FamilyCalTrue';
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
       <CustomHook />
       <ReactClone />
       <RenderProp />
+      <EventList />
+      <FamilyCalendar />
     </div>
   );
 }
