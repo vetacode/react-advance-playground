@@ -7,6 +7,7 @@ import FetchCustData from './Components/FetchCustData';
 import {
   CallBackGreetings,
   FalseGreetings,
+  SapaBenar,
   TrueGreetings,
 } from './Components/GreetingsObj';
 import LowCalDesserts from './Components/LowCalDesserts';
@@ -24,8 +25,8 @@ import { FamilyCalendar } from './Components/FamilyCalTrue';
 function App() {
   return (
     <div className='App'>
-      <UseCallbackBad />
-      <UseCallbackBest />
+      {/* <UseCallbackBad /> */}
+      {/* <UseCallbackBest /> */}
       <LowCalDesserts />
       <UncontrolledForm />
       <ControlledForm />
@@ -34,6 +35,7 @@ function App() {
       <ThemeSwitcher />
       <FalseGreetings />
       <TrueGreetings />
+      <SapaBenar/>
       <CallBackGreetings />
       <GiftCard />
       <FetchCrypto />

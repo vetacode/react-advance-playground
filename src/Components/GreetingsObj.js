@@ -39,6 +39,21 @@ function TrueGreetings() {
   );
 }
 
+const SapaBenar = () => {
+  const [menyapa, setMenyapa] = useState({sapa: 'Selamat Pagi'})
+  const updateMenyapa = () => {
+    setMenyapa({...menyapa, sapa: 'Ayo Kita Olahraga dan makan bubur'});
+  }
+  return (
+    <div className='section'>
+      <h1 >Sapalah Aku</h1>
+      <h2 >{menyapa.sapa}</h2>
+      <button onClick={updateMenyapa}>Sapa Aku Dong</button>
+    </div>
+  )
+
+}
+
 function CallBackGreetings() {
   const [greeting, setGreeting] = useState({
     greet: 'Hello',
@@ -63,7 +78,7 @@ function CallBackGreetings() {
   );
 }
 
-export { FalseGreetings, TrueGreetings, CallBackGreetings };
+export { FalseGreetings, TrueGreetings, CallBackGreetings, SapaBenar };
 
 /*
 ⚖️ Which one is best?
